@@ -201,6 +201,7 @@ export default function App() {
 - `minHeights?: number=100`: Minimum drag height. The `visiableDragbar=true` value is valid.
 - `tabSize?: number=2`: The number of characters to insert when pressing tab key. Default `2` spaces.
 - `hideToolbar?: boolean=false`: Option to hide the tool bar.
+- `name?: string`: Option to add a name attribute to the textarea, this might be needed when working with forms framework like Formik.
 
 ### Development
 

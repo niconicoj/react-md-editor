@@ -66,6 +66,10 @@ export interface MDEditorProps extends Omit<React.HTMLAttributes<HTMLDivElement>
    * Hide the tool bar
    */
   hideToolbar?: boolean;
+  /**
+   * Hide the tool bar
+   */
+  name?: string;
 }
 
 export interface MDEditorState {
@@ -152,7 +156,7 @@ export default class MDEditor extends React.PureComponent<MDEditorProps, MDEdito
     this.commandOrchestrator.executeCommand(command);
   }
   public render() {
-    const { prefixCls, className, value, commands, height, visiableDragbar, preview, fullscreen, previewOptions, textareaProps, maxHeight, minHeight, autoFocus, tabSize, onChange, hideToolbar, ...other } = this.props;
+    const { prefixCls, className, value, commands, height, visiableDragbar, preview, fullscreen, previewOptions, textareaProps, maxHeight, minHeight, autoFocus, tabSize, onChange, hideToolbar, name, ...other } = this.props;
     const cls = classnames(className, prefixCls, {
       [`${prefixCls}-show-${this.state.preview}`]: this.state.preview,
       [`${prefixCls}-fullscreen`]: this.state.fullscreen,
@@ -184,6 +188,7 @@ export default class MDEditor extends React.PureComponent<MDEditorProps, MDEdito
               onMouseOver={() => this.leftScroll = true}
               onMouseLeave={() => this.leftScroll = false}
               onChange={this.handleChange.bind(this)}
+              name={name}
             />
           )}
           <MarkdownPreview

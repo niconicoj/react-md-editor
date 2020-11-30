@@ -11,6 +11,7 @@ export interface ITextAreaProps extends Omit<React.TextareaHTMLAttributes<HTMLTe
   onScroll?: (e: React.UIEvent<HTMLDivElement>) => void;
   value?: string;
   tabSize?: number;
+  name?: string;
 }
 
 export interface ITextAreaState {
@@ -60,7 +61,7 @@ export default class TextArea extends Component<ITextAreaProps, ITextAreaState> 
     pre!.innerHTML = `${html}<br />`;
   }
   render() {
-    const { prefixCls, className, onChange, onScroll, tabSize, style, ...otherProps } = this.props;
+    const { prefixCls, className, onChange, onScroll, tabSize, style, name, ...otherProps } = this.props;
     return (
       <div ref={this.warp} className={classnames(`${prefixCls}-aree`, className)} onScroll={onScroll}>
         <div className={classnames(`${prefixCls}-text`)}>
@@ -75,6 +76,7 @@ export default class TextArea extends Component<ITextAreaProps, ITextAreaState> 
             className={`${prefixCls}-text-input`}
             value={this.state.value}
             onChange={this.handleChange.bind(this)}
+            name={name}
           />
         </div>
       </div>
